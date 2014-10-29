@@ -1,0 +1,33 @@
+<%= form_for([@question, @user_response]) do |f| %>
+  <% if @user_response.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user_response.errors.count, "error") %> prohibited this response from being saved:</h2>
+
+      <ul>
+      <% @user_response.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :question_id %>
+
+  <h2>
+    <strong>Country:</strong>
+
+  </h2>
+
+  <div class="field">
+    <%= f.label :capital %><br>
+    <%= f.text_field :capital %>
+  </div>
+
+  <div class="field">
+    <%= f.label :language %><br>
+    <%= f.text_field :language %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
